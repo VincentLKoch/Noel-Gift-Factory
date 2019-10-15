@@ -66,30 +66,39 @@ const addGift = (gift) => {
     if (gift.weight + sumWeightInSled > 12) {
         console.error('Sled is full')
     } else {
-        setTimeout({}, gift.time)
-        sled.push(gift)
+        setTimeout(sled.push(gift), gift.time*100)
+        
     }
 
 }
 
 const deliverGifts = () => {
+    console.log('Sled : ')
+    console.log(sled)
 
     axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
         console.log(response)
         /* document.getElementById("outputEx4Text").innerHTML = response.data */
-    })
-        .catch(error => {
-            console.log(error)
-            /* document.getElementById("outputEx4Text").innerHTML = error.response.statusText */
-        });
+    }).catch(error => {
+        console.log(error)
+        /* document.getElementById("outputEx4Text").innerHTML = error.response.statusText */
+    });
+
+    sled = [];
 }
 
 console.log('medium : ')
 mediumGift()
 console.log('large : ')
 largeGift()
+
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
 console.log('little : ')
 littleGift()
+
+
 
 /*
 204 = all fine
