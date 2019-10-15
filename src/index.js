@@ -66,8 +66,8 @@ const addGift = (gift) => {
     if (gift.weight + sumWeightInSled > 12) {
         console.error('Sled is full')
     } else {
-        setTimeout(sled.push(gift), gift.time*100)
-        
+        setTimeout(sled.push(gift), gift.time * 100)
+
     }
 
 }
@@ -80,7 +80,17 @@ const deliverGifts = () => {
         console.log(response)
         /* document.getElementById("outputEx4Text").innerHTML = response.data */
     }).catch(error => {
-        console.log(error)
+
+        console.log("error.response.status: ");
+        console.log(error.response.status);
+        if (error.response.status === 451) {
+            //TODO
+            //Hungry
+            console.log('Status 451')
+        } else {
+            console.error(error)
+        }
+
         /* document.getElementById("outputEx4Text").innerHTML = error.response.statusText */
     });
 
@@ -97,6 +107,42 @@ console.log(deliverGifts())
 
 console.log('little : ')
 littleGift()
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
+
+littleGift()
+console.log('Delivering gifts')
+console.log(deliverGifts())
 
 
 
