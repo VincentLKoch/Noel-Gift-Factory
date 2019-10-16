@@ -4,52 +4,52 @@ import giftFactory from './gift'
 
 let sled = []
 
-const addLittleGift = () => {
+const addLittleGift = async () => {
     try {
-        addGift(giftFactory('little'))
+        await addGift(giftFactory('little'))
     } catch (error) {
-        /* Sled Full */
+        console.log("in error full :");
     }
 }
 
-const addMediumGift = () => {
+const addMediumGift = async () => {
     try {
-        addGift(giftFactory('medium'))
+        await addGift(giftFactory('medium'))
     } catch (error) {
-        /* Sled Full */
+        console.log("in error full :");
     }
 }
 
-const addLargeGift = /* async */ () => {
+const addLargeGift = async () => {
     try {
-        /* await */ addGift(giftFactory('large'))
+        await addGift(giftFactory('large'))
     } catch (error) {
-        /* Sled Full */
+        console.log("in error full :");
     }
 }
 
-const sumWeightGifts = (sled) => {
-    let sum = 0
-    for (let i = 0; i < sled; i++) {
-        sum += sled[i].weight
-    }
-    return sum
+const sumWeightGifts = () => {
+    return sled.reduce((sum, currentGift) => sum + currentGift.weight, 0)
 }
 
-const addGift = (gift) => {
-    const sumWeightInSled = sumWeightGifts(sled)
-    if (gift.weight + sumWeightInSled > 12) {
-        console.error('Sled is full')
+const timeoutPromise = (second) => {
+    return new Promise(resolve => setTimeout(resolve, second*1000));
+}
+
+const addGift = async (gift) => {
+    if (sumWeightGifts() > 12) {
+        throw 'Sled is full'
     } else {
-        setTimeout(sled.push(gift), gift.time * 100)
+        await timeoutPromise(gift.time)
+        sled.push(gift)
     }
 }
 
-const deliverGifts = () => {
+const deliverGifts = async () => {
     console.log('Sled : ')
     console.log(sled)
 
-    axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
+    await axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
         console.log(response)
         /* document.getElementById("outputEx4Text").innerHTML = response.data */
         sled = [];
@@ -69,10 +69,21 @@ const deliverGifts = () => {
     });
 }
 
+let updateOutputSled = () => {
+    let output = '';
+    for (let result in sled) {
+        for (let property in sled[result]) {
+            output += property + ': ' + sled[result][property] + '; ';
+        }
+        output += '<br>'
+    }
+    document.getElementById("outputEx1").innerHTML = output;
+}
 
+export { addLittleGift }
+export { addMediumGift }
+export { addLargeGift }
 
-export {addLittleGift}
-export {addMediumGift}
-export {addLargeGift}
+export { deliverGifts }
 
-export {deliverGifts}
+export { updateOutputSled }

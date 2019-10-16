@@ -4,62 +4,22 @@ import './index.css'
 // If you want to use jquery
 import $ from 'jquery'
 
-import { addLittleGift, addMediumGift, addLargeGift, deliverGifts } from './sled'
+import { addLittleGift, addMediumGift, addLargeGift, deliverGifts, updateOutputSled } from './sled'
 
+window.updateOutputSled = updateOutputSled
+window.addLargeGift = addLargeGift
+window.deliverGifts = deliverGifts
+
+addLargeGift()
+
+const addmoiLarge = async () => {
+    await addLargeGift()
+    updateOutputSled()
+}
+
+window.addmoiLarge = addmoiLarge
 /*
 204 = all fine
 400 = error
 451 = renne a faim try again
 */
-
-
-console.log('medium : ')
-addMediumGift()
-console.log('large : ')
-addLargeGift()
-
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-console.log('little : ')
-addLittleGift()
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-addLittleGift()
-console.log('Delivering gifts')
-console.log(deliverGifts())
-
-
-
-
