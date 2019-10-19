@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import giftFactory from './gift'
 
-import { dwarfWorking , dwarfStopWorking  } from './graphic'
+import { dwarfWorking, dwarfStopWorking, sledIsFull, sendingGift, giftSended, isHungry } from './graphic'
 
 let sled = []
 let isAdding = false
@@ -68,7 +68,7 @@ const timeoutPromise = (second) => {
 
 const addGift = async (gift) => {
     if (sumWeightGifts() > 12) {
-        console.log('Sled is full') //TODO
+        sledIsFull()
     } else {
         await timeoutPromise(gift.time)
         sled.push(gift)
@@ -76,27 +76,17 @@ const addGift = async (gift) => {
 }
 
 const deliverGifts = async () => {
-    console.log('Sled : ')
-    console.log(sled)
-
+    sendingGift()
     await axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
-        console.log(response)
-        /* document.getElementById("outputEx4Text").innerHTML = response.data */
         sled = [];
     }).catch(error => {
-
-        console.log("error.response.status: ");
-        console.log(error.response.status);
         if (error.response.status === 451) {
-            //TODO
-            //Hungry
-            console.warn('Status 451')
+            isHungry()
         } else {
             console.error(error)
         }
-
-        /* document.getElementById("outputEx4Text").innerHTML = error.response.statusText */
     });
+    giftSended()
 }
 
 let updateOutputSled = () => {
@@ -115,5 +105,4 @@ export { addMediumGift }
 export { addLargeGift }
 
 export { deliverGifts }
-
 export { updateOutputSled }
