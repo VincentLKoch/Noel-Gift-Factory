@@ -3,28 +3,50 @@ import axios from 'axios'
 import giftFactory from './gift'
 
 let sled = []
+let isAdding = false
 
 const addLittleGift = async () => {
-    try {
-        await addGift(giftFactory('little'))
-    } catch (error) {
-        console.log("in error full :");
+    if (isAdding) {
+        console.warn("The drawf is already working !"); // TODO
+    }
+    else {
+        isAdding = true
+        try {
+            await addGift(giftFactory('little'))
+        } catch (error) {
+            console.log("in error full :");
+        }
+        isAdding = false
     }
 }
 
 const addMediumGift = async () => {
-    try {
-        await addGift(giftFactory('medium'))
-    } catch (error) {
-        console.log("in error full :");
+    if (isAdding) {
+        console.warn("The drawf is already working !"); // TODO
+    }
+    else {
+        isAdding = true
+        try {
+            await addGift(giftFactory('medium'))
+        } catch (error) {
+            console.log("in error full :");
+        }
+        isAdding = false
     }
 }
 
 const addLargeGift = async () => {
-    try {
-        await addGift(giftFactory('large'))
-    } catch (error) {
-        console.log("in error full :");
+    if (isAdding) {
+        console.warn("The drawf is already working !"); // TODO
+    }
+    else {
+        isAdding = true
+        try {
+            await addGift(giftFactory('large'))
+        } catch (error) {
+            console.log("in error full :");
+        }
+        isAdding = false
     }
 }
 
@@ -33,7 +55,7 @@ const sumWeightGifts = () => {
 }
 
 const timeoutPromise = (second) => {
-    return new Promise(resolve => setTimeout(resolve, second*1000));
+    return new Promise(resolve => setTimeout(resolve, second * 1000));
 }
 
 const addGift = async (gift) => {
