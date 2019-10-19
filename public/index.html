@@ -11,21 +11,20 @@
   <title>Ho Ho Ho!</title>
 </head>
 
-<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
 
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <header>
-    <div id='header' style="background-image: linear-gradient(-225deg, rgba(153, 153, 153, 0.034) 0%, rgba(3, 3, 3, 0.6) 50%), url('./image/santagragas.jpg');">
-      <h1><b>Chrismas Time</b></h1>
-      <p>
-        <h2>
-          Pick your gift !
-        </h2>
-      </p>
-    </div>
-  </header>
+<body style="background-image: url('./image/noel.jpg'); background-repeat: no-repeat; background-size: cover">
+  <h1>
+    <b>Chrismas Time</b>
+  </h1>
+  <p>
+    <h2>
+      <b>Pick your gift !</b>
+    </h2>
+  </p>
+  </div>
   <div id="root">
-    <div class="container-fluid" style="background-color:lightsteelblue;">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="row">
@@ -53,11 +52,10 @@
           </div>
           <div id="deliver" class="row">
             <button onClick="deliverGifts(); updateOutputSled()">Deliver</button>
-          </div>      
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </body>
 
