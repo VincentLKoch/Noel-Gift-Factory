@@ -7,7 +7,7 @@ let isAdding = false
 
 const addLittleGift = async () => {
     if (isAdding) {
-        console.warn("The drawf is already working !"); // TODO
+        console.warn("The dwarf is already working !"); // TODO
     }
     else {
         isAdding = true
@@ -22,7 +22,7 @@ const addLittleGift = async () => {
 
 const addMediumGift = async () => {
     if (isAdding) {
-        console.warn("The drawf is already working !"); // TODO
+        console.warn("The dwarf is already working !"); // TODO
     }
     else {
         isAdding = true
@@ -37,7 +37,7 @@ const addMediumGift = async () => {
 
 const addLargeGift = async () => {
     if (isAdding) {
-        console.warn("The drawf is already working !"); // TODO
+        console.warn("The dwarf is already working !"); // TODO
     }
     else {
         isAdding = true
