@@ -1,11 +1,11 @@
-import {stopPlay, dwarfWorkingSound} from './audio'
-
 const dwarfWorking = () => {
-    //TODO change image
+    document.getElementById("Elfe1").hidden = true
+    document.getElementById("Elfe2").hidden = false
 }
 
 const dwarfStopWorking = () => {
-    //TODO Change image
+    document.getElementById("Elfe1").hidden = false
+    document.getElementById("Elfe2").hidden = true
 }
 
 const dwarfAlreadyWorking = () => {
@@ -19,7 +19,7 @@ const sledIsFull = () => {
 }
 
 const sendingGift = () => {
-    console.warn('Send')
+    console.warn('Sending')
 }
 
 const giftSended = () => {
@@ -81,10 +81,10 @@ const updateOutputSled = (sled) => {
             break;
     }
 
-    if (output==='') {
+    if (output === '') {
         output = '&nbsp;'
     }
-    
+
     document.getElementById("listSled").innerHTML = output;
 }
 
