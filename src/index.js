@@ -18,8 +18,3 @@ const addmoiLarge = async () => {
 }
 
 window.addmoiLarge = addmoiLarge
-/*
-204 = all fine
-400 = error
-451 = renne a faim try again
-*/

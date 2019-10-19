@@ -2,59 +2,62 @@ import axios from 'axios'
 
 import giftFactory from './gift'
 
-import { dwarfWorking, dwarfStopWorking, sledIsFull, sendingGift, giftSended, isHungry } from './graphic'
+import {
+    dwarfWorking, dwarfStopWorking, dwarfAlreadyWorking,
+    sledIsFull, sendingGift, giftSended, isHungry
+} from './graphic'
 
 let sled = []
-let isAdding = false
+let isWorking = false
 
 const addLittleGift = async () => {
-    if (isAdding) {
-        console.warn("The dwarf is already working !"); // TODO
+    if (isWorking) {
+        dwarfAlreadyWorking()
     }
     else {
-        isAdding = true
+        isWorking = true
         dwarfWorking()
         try {
             await addGift(giftFactory('little'))
         } catch (error) {
-            console.log("in error full :");
+            console.error(error);
         }
         dwarfStopWorking()
-        isAdding = false
+        isWorking = false
     }
 }
 
 const addMediumGift = async () => {
-    if (isAdding) {
-        console.warn("The dwarf is already working !"); // TODO
+    if (isWorking) {
+        dwarfAlreadyWorking()
     }
     else {
-        isAdding = true
+        isWorking = true
         dwarfWorking()
         try {
             await addGift(giftFactory('medium'))
         } catch (error) {
-            console.log("in error full :");
+            console.error(error);
         }
         dwarfStopWorking()
-        isAdding = false
+        isWorking = false
     }
 }
 
 const addLargeGift = async () => {
-    if (isAdding) {
-        console.warn("The dwarf is already working !"); // TODO
+    if (isWorking) {
+        dwarfAlreadyWorking()
     }
     else {
-        isAdding = true
+        isWorking = true
         dwarfWorking()
         try {
             await addGift(giftFactory('large'))
         } catch (error) {
-            console.log("in error full :");
+            console.error(error);
         }
         dwarfStopWorking()
-        isAdding = false
+        isWorking = false
     }
 }
 

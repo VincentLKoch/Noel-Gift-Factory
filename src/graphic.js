@@ -6,6 +6,12 @@ const dwarfStopWorking = () => {
     //TODO Change image
 }
 
+const dwarfAlreadyWorking = () => {
+    //call quand il bosse déjà et que l'user demande encore 
+    //text display ?
+    console.warn("The dwarf is already working !"); 
+}
+
 const sledIsFull = () => {
     console.warn('sled is full!')
 }
@@ -22,8 +28,11 @@ const isHungry = () => {
     console.warn('is Hungry try again')
 }
 
+
+
 export { dwarfWorking };
 export { dwarfStopWorking };
+export { dwarfAlreadyWorking };
 export { sledIsFull };
 export { sendingGift };
 export { giftSended };
