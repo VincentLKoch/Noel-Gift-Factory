@@ -3,7 +3,7 @@ import axios from 'axios'
 import giftFactory from './gift'
 
 import {
-    dwarfWorking, dwarfStopWorking, dwarfAlreadyWorking,    sledIsFull,
+    dwarfWorking, dwarfStopWorking, dwarfAlreadyWorking, sledIsFull,
     sendingGift, giftSended, isHungry, updateOutputSled
 } from './graphic'
 
@@ -94,8 +94,4 @@ const deliverGifts = async () => {
     giftSended()
 }
 
-export { addLittleGift }
-export { addMediumGift }
-export { addLargeGift }
-
-export { deliverGifts }
+export { addLittleGift, addMediumGift, addLargeGift, deliverGifts }
