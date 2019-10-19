@@ -2,6 +2,8 @@ import axios from 'axios'
 
 import giftFactory from './gift'
 
+import { dwarfWorking , dwarfStopWorking  } from './graphic'
+
 let sled = []
 let isAdding = false
 
@@ -11,11 +13,13 @@ const addLittleGift = async () => {
     }
     else {
         isAdding = true
+        dwarfWorking()
         try {
             await addGift(giftFactory('little'))
         } catch (error) {
             console.log("in error full :");
         }
+        dwarfStopWorking()
         isAdding = false
     }
 }
@@ -26,11 +30,13 @@ const addMediumGift = async () => {
     }
     else {
         isAdding = true
+        dwarfWorking()
         try {
             await addGift(giftFactory('medium'))
         } catch (error) {
             console.log("in error full :");
         }
+        dwarfStopWorking()
         isAdding = false
     }
 }
@@ -41,11 +47,13 @@ const addLargeGift = async () => {
     }
     else {
         isAdding = true
+        dwarfWorking()
         try {
             await addGift(giftFactory('large'))
         } catch (error) {
             console.log("in error full :");
         }
+        dwarfStopWorking()
         isAdding = false
     }
 }
@@ -60,7 +68,7 @@ const timeoutPromise = (second) => {
 
 const addGift = async (gift) => {
     if (sumWeightGifts() > 12) {
-        throw 'Sled is full'
+        console.log('Sled is full') //TODO
     } else {
         await timeoutPromise(gift.time)
         sled.push(gift)

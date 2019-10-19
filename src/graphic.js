@@ -1,11 +1,10 @@
-import { dwarfWorkingSound } from './sound'
-
-const dwarfworking = () => {
-    dwarfWorkingSound.play()
+const dwarfWorking = () => {
     //TODO change image
 }
 
-const dwarfStopworking = () => {
-    stopPlay(dwarfWorkingSound)
+const dwarfStopWorking = () => {
     //TODO Change image
 }
+
+export { dwarfWorking };
+export { dwarfStopWorking };

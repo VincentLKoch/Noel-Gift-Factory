@@ -10,7 +10,7 @@ class Gift {
 /* Maybe latter */
 class LittleGift extends Gift {
     constructor() {
-        super(1)
+        super(1, 0.5)
     }
 }
 
