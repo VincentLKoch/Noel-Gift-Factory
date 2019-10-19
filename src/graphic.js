@@ -6,28 +6,27 @@ const dwarfWorking = () => {
 const dwarfStopWorking = () => {
     document.getElementById("Elfe1").hidden = false
     document.getElementById("Elfe2").hidden = true
+    document.getElementById("TextOutput").innerHTML = '&nbsp;'
 }
 
 const dwarfAlreadyWorking = () => {
-    //call quand il bosse déjà et que l'user demande encore 
-    //text display ?
-    console.warn("The dwarf is already working !");
+    document.getElementById("TextOutput").innerHTML = "The dwarf is busy!"
 }
 
 const sledIsFull = () => {
-    console.warn('sled is full!')
+    document.getElementById("TextOutput").innerHTML = 'Sled full!'
 }
 
 const sendingGift = () => {
-    console.warn('Sending')
+    document.getElementById("TextOutput").innerHTML = 'Sending Gift'
 }
 
 const giftSended = () => {
-    console.warn('Sended')
+    document.getElementById("TextOutput").innerHTML = '&nbsp;'
 }
 
 const isHungry = () => {
-    console.warn('is Hungry try again')
+    document.getElementById("TextOutput").innerHTML = 'I am hungry! Try again!'
 }
 
 
