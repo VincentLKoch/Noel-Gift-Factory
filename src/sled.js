@@ -3,8 +3,8 @@ import axios from 'axios'
 import giftFactory from './gift'
 
 import {
-    dwarfWorking, dwarfStopWorking, dwarfAlreadyWorking,
-    sledIsFull, sendingGift, giftSended, isHungry
+    dwarfWorking, dwarfStopWorking, dwarfAlreadyWorking,    sledIsFull,
+    sendingGift, giftSended, isHungry, updateOutputSled
 } from './graphic'
 
 let sled = []
@@ -75,6 +75,7 @@ const addGift = async (gift) => {
     } else {
         await timeoutPromise(gift.time)
         sled.push(gift)
+        updateOutputSled(sled)
     }
 }
 
@@ -82,6 +83,7 @@ const deliverGifts = async () => {
     sendingGift()
     await axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
         sled = [];
+        updateOutputSled(sled)
     }).catch(error => {
         if (error.response.status === 451) {
             isHungry()
@@ -92,20 +94,8 @@ const deliverGifts = async () => {
     giftSended()
 }
 
-let updateOutputSled = () => {
-    let output = '';
-    for (let result in sled) {
-        for (let property in sled[result]) {
-            output += property + ': ' + sled[result][property] + '; ';
-        }
-        output += '<br>'
-    }
-    document.getElementById("outputEx1").innerHTML = output;
-}
-
 export { addLittleGift }
 export { addMediumGift }
 export { addLargeGift }
 
 export { deliverGifts }
-export { updateOutputSled }

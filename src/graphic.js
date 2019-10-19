@@ -1,3 +1,5 @@
+import {stopPlay, dwarfWorkingSound} from './audio'
+
 const dwarfWorking = () => {
     //TODO change image
 }
@@ -9,7 +11,7 @@ const dwarfStopWorking = () => {
 const dwarfAlreadyWorking = () => {
     //call quand il bosse déjà et que l'user demande encore 
     //text display ?
-    console.warn("The dwarf is already working !"); 
+    console.warn("The dwarf is already working !");
 }
 
 const sledIsFull = () => {
@@ -29,6 +31,62 @@ const isHungry = () => {
 }
 
 
+const updateOutputSled = (sled) => {
+    let large = 0
+    let medium = 0
+    let little = 0
+    for (let result in sled) {
+        if (sled[result].weight === 5) {
+            large += 1
+        } else if (sled[result].weight === 2) {
+            medium += 1
+        } else if (sled[result].weight === 1) {
+            little += 1
+        } else {
+            console.error('Unexpected object in sled !')
+        }
+    }
+
+    let output = '';
+    switch (large) {
+        case 0:
+            break;
+        case 1:
+            output += large + ' big gift<br>'
+            break;
+        default:
+            output += large + ' big gifts<br>'
+            break;
+    }
+
+    switch (medium) {
+        case 0:
+            break;
+        case 1:
+            output += medium + ' medium gift<br>'
+            break;
+        default:
+            output += medium + ' mediums gifts<br>'
+            break;
+    }
+
+    switch (little) {
+        case 0:
+            break;
+        case 1:
+            output += little + ' small gift<br>'
+            break;
+        default:
+            output += little + ' small gifts<br>'
+            break;
+    }
+
+    if (output==='') {
+        output = '&nbsp;'
+    }
+    
+    document.getElementById("listSled").innerHTML = output;
+}
 
 export { dwarfWorking };
 export { dwarfStopWorking };
@@ -37,3 +95,4 @@ export { sledIsFull };
 export { sendingGift };
 export { giftSended };
 export { isHungry };
+export { updateOutputSled };

@@ -4,17 +4,7 @@ import './index.css'  /*
 // If you want to use jquery
 import $ from 'jquery' */
 
-import { addLittleGift, addMediumGift, addLargeGift, deliverGifts, updateOutputSled } from './sled'
+import { addLittleGift, addMediumGift, addLargeGift, deliverGifts } from './sled'
 
-window.updateOutputSled = updateOutputSled
-window.addLargeGift = addLargeGift
 window.deliverGifts = deliverGifts
-
-addLargeGift();
-
-const addmoiLarge = async () => {
-    await addLargeGift()
-    updateOutputSled()
-}
-
-window.addmoiLarge = addmoiLarge
+window.addLargeGift = addLargeGift
