@@ -17,4 +17,5 @@ const giftFactory = (size) => {
 }
 
 
-export default { Gift, giftFactory }
+export {Gift} ; 
+export default  giftFactory ;
