@@ -6,32 +6,27 @@ const dwarfWorking = () => {
 const dwarfStopWorking = () => {
     document.getElementById("Elfe1").hidden = false;
     document.getElementById("Elfe2").hidden = true;
-    //document.getElementById("TextOutput").innerHTML = '&nbsp;';
+    document.getElementById("TextOutput").innerHTML = '';
 };
 
 const dwarfAlreadyWorking = () => {
-    console.warn('The dwarf is busy')
-    //document.getElementById("TextOutput").innerHTML = "The dwarf is busy!";
+    document.getElementById("TextOutput").innerHTML = "The dwarf is busy!";
 };
 
 const sledIsFull = () => {
-    console.warn('sledIsFull')
-    //document.getElementById("TextOutput").innerHTML = 'Sled full!';
+    document.getElementById("TextOutput").innerHTML = 'Sled full!';
 };
 
 const sendingGift = () => {
-    console.warn('sendingGift')
-    //document.getElementById("TextOutput").innerHTML = 'Sending Gift';
+    document.getElementById("TextOutput").innerHTML = 'Sending Gift';
 };
 
 const giftSended = () => {
-    console.warn('giftSended')
-   // document.getElementById("TextOutput").innerHTML = '&nbsp;';
+    document.getElementById("TextOutput").innerHTML = '';
 };
 
 const isHungry = () => {
-    console.warn('isHungry')
-    //document.getElementById("TextOutput").innerHTML = 'I am hungry! Try again!';
+    document.getElementById("TextOutput").innerHTML = 'I am hungry! Try again!';
 };
 
 

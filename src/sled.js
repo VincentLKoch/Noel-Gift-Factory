@@ -14,8 +14,10 @@ const addGift = async (gift) => {
     if (sumWeightGifts() > 12) {
         sledIsFull();
     } else {
+        dwarfWorking()
         await timeoutPromise(gift.time);
         sled.push(gift);
+        dwarfStopWorking()
         updateOutputSled(sled);
     };
 };
@@ -26,13 +28,11 @@ const addLittleGift = async () => {
     }
     else {
         isWorking = true
-        dwarfWorking()
         try {
             await addGift(giftFactory('little'));
         } catch (error) {
             console.error(error);
         }
-        dwarfStopWorking()
         isWorking = false
     }
 };
@@ -42,13 +42,11 @@ const addMediumGift = async () => {
         dwarfAlreadyWorking()
     } else {
         isWorking = true
-        dwarfWorking()
         try {
             await addGift(giftFactory('medium'));
         } catch (error) {
             console.error(error);
         }
-        dwarfStopWorking()
         isWorking = false
     }
 };
@@ -58,13 +56,11 @@ const addLargeGift = async () => {
         dwarfAlreadyWorking();
     } else {
         isWorking = true
-        dwarfWorking();
         try {
             await addGift(giftFactory('large'));
         } catch (error) {
             console.error(error);
         }
-        dwarfStopWorking();
         isWorking = false;
     }
 };
