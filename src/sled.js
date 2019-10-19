@@ -10,6 +10,16 @@ import {
 let sled = []
 let isWorking = false
 
+const addGift = async (gift) => {
+    if (sumWeightGifts() > 12) {
+        sledIsFull();
+    } else {
+        await timeoutPromise(gift.time);
+        sled.push(gift);
+        updateOutputSled(sled);
+    };
+};
+
 const addLittleGift = async () => {
     if (isWorking) {
         dwarfAlreadyWorking()
@@ -18,80 +28,68 @@ const addLittleGift = async () => {
         isWorking = true
         dwarfWorking()
         try {
-            await addGift(giftFactory('little'))
+            await addGift(giftFactory('little'));
         } catch (error) {
             console.error(error);
         }
         dwarfStopWorking()
         isWorking = false
     }
-}
+};
 
 const addMediumGift = async () => {
     if (isWorking) {
         dwarfAlreadyWorking()
-    }
-    else {
+    } else {
         isWorking = true
         dwarfWorking()
         try {
-            await addGift(giftFactory('medium'))
+            await addGift(giftFactory('medium'));
         } catch (error) {
             console.error(error);
         }
         dwarfStopWorking()
         isWorking = false
     }
-}
+};
 
 const addLargeGift = async () => {
     if (isWorking) {
-        dwarfAlreadyWorking()
-    }
-    else {
+        dwarfAlreadyWorking();
+    } else {
         isWorking = true
-        dwarfWorking()
+        dwarfWorking();
         try {
-            await addGift(giftFactory('large'))
+            await addGift(giftFactory('large'));
         } catch (error) {
             console.error(error);
         }
-        dwarfStopWorking()
-        isWorking = false
+        dwarfStopWorking();
+        isWorking = false;
     }
-}
+};
 
 const sumWeightGifts = () => {
-    return sled.reduce((sum, currentGift) => sum + currentGift.weight, 0)
-}
+    return sled.reduce((sum, currentGift) => sum + currentGift.weight, 0);
+};
 
 const timeoutPromise = (second) => {
     return new Promise(resolve => setTimeout(resolve, second * 1000));
-}
-
-const addGift = async (gift) => {
-    if (sumWeightGifts() > 12) {
-        sledIsFull()
-    } else {
-        await timeoutPromise(gift.time)
-        sled.push(gift)
-        updateOutputSled(sled)
-    }
-}
+};
 
 const deliverGifts = async () => {
-    sendingGift()
+    sendingGift();
     await axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
         sled = [];
-        updateOutputSled(sled)
+        updateOutputSled(sled);
     }).catch(error => {
         if (error.response.status === 451) {
             isHungry()
         } else {
-            console.error(error)
+            console.error(error);
         }
     });
-    giftSended()
-}
+    giftSended();
+};
 
 export { addLittleGift, addMediumGift, addLargeGift, deliverGifts }
