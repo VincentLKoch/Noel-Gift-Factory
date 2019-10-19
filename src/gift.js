@@ -7,13 +7,6 @@ class Gift {
 
 }
 
-/* Maybe latter */
-class LittleGift extends Gift {
-    constructor() {
-        super(1, 0.5)
-    }
-}
-
 const giftFactory = (size) => {
     switch (size) {
         case 'little': return new Gift(1, 0.5)
@@ -24,5 +17,4 @@ const giftFactory = (size) => {
 }
 
 
-export { Gift };
-export default giftFactory
+export default { Gift, giftFactory }
