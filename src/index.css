@@ -39,6 +39,9 @@ button {
 	margin-top: 10%;
 }
 
-#listSled {
-	color: white,
+#TextOutput{
+	color: white;
+	margin-top: 5%;
+	margin-left: 40%;
+	margin-right: 40%;
 }
