@@ -4,7 +4,6 @@ class Gift {
         this.weight = weight
         this.time = time
     }
-
 }
 
 const giftFactory = (size) => {
@@ -16,5 +15,4 @@ const giftFactory = (size) => {
     };
 }
 
-export {Gift} ; 
 export default giftFactory;

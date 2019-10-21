@@ -75,17 +75,19 @@ const timeoutPromise = (second) => {
 
 const deliverGifts = async () => {
     sendingGift();
-    await axios.post('http://localhost:8081', { "gifts": sled }).then(response => {
+    try {
+        await axios.post('http://localhost:8081', { "gifts": sled })
         sled = [];
         updateOutputSled(sled);
-    }).catch(error => {
+        giftSended();
+    }
+    catch (error) {
         if (error.response.status === 451) {
             isHungry()
         } else {
             console.error(error);
         }
-    });
-    giftSended();
+    }
 };
 
 export { addLittleGift, addMediumGift, addLargeGift, deliverGifts }
